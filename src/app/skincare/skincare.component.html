@@ -1,0 +1,10 @@
+<h2>Liste des sKINCARE</h2>
+<ul>
+  <li *ngFor="let skincare of skincare">
+    <strong>{{ skincare.nom }}</strong> - 
+    Prix : {{ skincare.prix }} € - 
+    Stock : {{ skincare.stock }} - 
+    Type : {{ skincare.type?.nom }} - 
+    Marque : {{ skincare.marque?.nom }}
+  </li>
+</ul>

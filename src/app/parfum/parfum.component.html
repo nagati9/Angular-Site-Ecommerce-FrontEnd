@@ -1,0 +1,10 @@
+<h2>Liste des Parfums</h2>
+<ul>
+  <li *ngFor="let parfum of parfums">
+    <strong>{{ parfum.nom }}</strong> - 
+    Prix : {{ parfum.prix }} € - 
+    Stock : {{ parfum.stock }} - 
+    Type : {{ parfum.type?.nom }} - 
+    Marque : {{ parfum.marque?.nom }}
+  </li>
+</ul>
