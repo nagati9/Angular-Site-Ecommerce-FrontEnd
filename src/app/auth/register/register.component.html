@@ -1,0 +1,46 @@
+<div class="auth-container">
+  <h2>Créer un compte</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="Nom">Nom</label>
+      <input
+        type="text"
+        id="Nom"
+        formControlName="Nom"
+        required
+        placeholder="Entrez votre nom"
+      />
+      <div *ngIf="registerForm.get('Nom')?.invalid && registerForm.get('Nom')?.touched">
+        <small>Le nom est requis</small>
+      </div>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        required
+        placeholder="Entrez votre email"
+      />
+      <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+        <small>Email est requis et doit être valide</small>
+      </div>
+    </div>
+    <div>
+      <label for="password">Mot de passe</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        required
+        placeholder="Entrez votre mot de passe"
+      />
+      <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        <small>Le mot de passe est requis</small>
+      </div>
+    </div>
+    <p> Already have an account ? <a href="/signin">Sign in</a></p>
+    <button type="submit" [disabled]="registerForm.invalid">S'inscrire</button>
+  </form>
+</div>

@@ -3,12 +3,20 @@ import { provideRouter } from '@angular/router';
 import { ParfumComponent } from './parfum/parfum.component';
 import { SkincareComponent } from './skincare/skincare.component';
 import { VetementComponent } from './vetement/vetement.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 
 export const routes: Routes = [
   { path: 'parfums', component: ParfumComponent },
   { path: 'skincare', component: SkincareComponent },
   { path: 'vetement', component: VetementComponent },
-  { path: '', redirectTo: '/parfums', pathMatch: 'full' }, // Route par défaut
+  { path: 'Accueil', component: AccueilComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'signin', component: LoginComponent },
+  { path: 'product/:type/:id', component: ProductDetailComponent },
+  { path: '', redirectTo: '/Accueil', pathMatch: 'full' }, // Route par défaut
 ];
 
 // Fournisseur global pour le routage

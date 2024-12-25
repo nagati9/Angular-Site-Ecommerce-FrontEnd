@@ -1,10 +1,11 @@
-<h2>Liste des sKINCARE</h2>
-<ul>
-  <li *ngFor="let skincare of skincare">
-    <strong>{{ skincare.nom }}</strong> - 
-    Prix : {{ skincare.prix }} € - 
-    Stock : {{ skincare.stock }} - 
-    Type : {{ skincare.type?.nom }} - 
-    Marque : {{ skincare.marque?.nom }}
-  </li>
-</ul>
+<div class="skincare-container">
+  <div class="skincare-card" *ngFor="let skin of skincare">
+    <img [src]="skin.photoPath" alt="{{ skin.nom }}" class="skincare-image" />
+    <h3 class="skincare-name">{{ shortenName(skin.nom) }}</h3>
+    <p class="skincare-marque">{{ skin.marque?.nom }}</p>
+    <p>{{skin.prix}} $</p>
+    <button [routerLink]="['/product', 'skin', skin.id]" [state]="skin"  class="details-button">
+      Voir les détails
+    </button>
+  </div>
+</div>

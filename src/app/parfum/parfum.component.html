@@ -1,4 +1,4 @@
-<h2>Liste des Parfums</h2>
+<!-- <h2>Liste des Parfums</h2>
 <ul>
   <li *ngFor="let parfum of parfums">
     <strong>{{ parfum.nom }}</strong> - 
@@ -7,4 +7,16 @@
     Type : {{ parfum.type?.nom }} - 
     Marque : {{ parfum.marque?.nom }}
   </li>
-</ul>
+</ul> -->
+<div class="parfum-container">
+  <div class="parfum-card" *ngFor="let parfum of parfums">
+    <img [src]="parfum.photoPath" alt="{{ parfum.nom }}" class="parfum-image" />
+    <h3 class="parfum-name">{{ shortenName(parfum.nom) }}</h3>
+    <p class="parfum-marque">{{ parfum.marque?.nom }}</p>
+    <p>{{parfum.prix}} $</p>
+    <button [routerLink]="['/product', 'parfum', parfum.id]" [state]="parfum" class="details-button">
+      Voir les détails
+    </button>
+  </div>
+</div>
+

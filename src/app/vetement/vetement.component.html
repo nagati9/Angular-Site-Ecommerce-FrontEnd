@@ -1,0 +1,11 @@
+<div class="vet-container">
+    <div class="vet-card" *ngFor="let vet of vetement">
+      <img [src]="vet.photoPath" alt="{{ vet.nom }}" class="vet-image" />
+      <h3 class="vet-name">{{ shortenName(vet.nom)  }}</h3>
+      <p class="vet-marque">{{ vet.marque?.nom }}</p>
+      <p>{{vet.prix}} $</p>
+      <button [routerLink]="['/product', 'skin', vet.id]" [state]="vet"  class="details-button">
+        Voir les détails
+      </button>
+    </div>
+  </div>
