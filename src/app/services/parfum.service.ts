@@ -8,11 +8,11 @@ import { Parfum } from '../models/parfum.model';
     providedIn: 'root'
 })
 export class ParfumService {
-    private apiUrl = `${environment.apiUrl}/Parfums`;
+    private apiUrl = `${environment.apiUrl}/Produit/GetProduitParType`;
 
     constructor(private http: HttpClient) {}
 
-    getParfums(): Observable<Parfum[]> {
-        return this.http.get<Parfum[]>(this.apiUrl);
+    getProduitsParType(type: number): Observable<Parfum[]> {
+        return this.http.get<Parfum[]>(`${this.apiUrl}/${type}`);
     }
 }

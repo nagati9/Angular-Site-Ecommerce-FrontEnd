@@ -17,7 +17,7 @@ export class VetementComponent {
     constructor(private vetementService: VetementService) {}
 
     ngOnInit(): void {
-        this.vetementService.getSkincare().subscribe(data => {
+        this.vetementService.getProduitsParType(3).subscribe(data => {
             this.vetement = data;
         });
     }

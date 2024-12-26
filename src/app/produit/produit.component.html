@@ -1,0 +1,16 @@
+<div class="produits-container">
+    <div *ngFor="let produit of produits" class="produit-card">
+      <img [src]="produit.photoPath" alt="{{ produit.nom }}" class="produit-image" />
+      <h3 class="produit-nom">{{ produit.nom }}</h3>
+      <p class="produit-prix">{{ produit.prix }}</p>
+      <p *ngIf="produit.typeParfum">Type Parfum: {{ produit.typeParfum.nom }}</p>
+      <p *ngIf="produit.typeSkincare">Type Skincare: {{ produit.typeSkincare.nom }}</p>
+      <p *ngIf="produit.typeVetement">Type Vêtement: {{ produit.typeVetement.nom }}</p>
+      <p *ngIf="produit.marqueParfum">Marque Parfum: {{ produit.marqueParfum.nom }}</p>
+      <p *ngIf="produit.marqueSkincare">Marque Skincare: {{ produit.marqueSkincare.nom }}</p>
+      <p *ngIf="produit.marqueVetement">Marque Vêtement: {{ produit.marqueVetement.nom }}</p>
+      <p class="produit-description">{{ produit.description }}</p>
+
+    </div>
+  </div>
+  

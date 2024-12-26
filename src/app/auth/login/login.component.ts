@@ -22,21 +22,15 @@ constructor(private fb: FormBuilder, private authService: AuthService,private ro
   });
 
 }
-
 onSubmit() {
   if (this.loginForm.valid) {
     const credentials = this.loginForm.value;
     this.authService.login(credentials).subscribe(
-      (response: { userId: number; userName: string }) => {
-        // Sauvegarder les informations utilisateur dans le localStorage
-        localStorage.setItem('userId', response.userId.toString());
-        localStorage.setItem('userName', response.userName);
-
-        // Mettre à jour l'interface utilisateur pour afficher le nom
-        console.log(`Bienvenue, ${response.userName}`);
-        
-        // Rediriger vers la page d'accueil
+      (response) => {
+        localStorage.setItem('token', response.token); // Stocker le token
+        localStorage.setItem('userName', response.userName); // Stocker le nom
         this.router.navigate(['/Accueil']);
+         location.reload();
       },
       (error) => {
         console.error('Erreur lors de la connexion :', error);
@@ -45,10 +39,9 @@ onSubmit() {
   }
 }
 
-logout() {
-  localStorage.removeItem('token');
-  localStorage.removeItem('userName');
-}
+
+
+
 }
 
 

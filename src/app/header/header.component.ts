@@ -16,6 +16,7 @@ import { catchError, of } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   userName: string | null = null;
+  router: any;
 
   constructor(private authService: AuthService) {}
 
@@ -32,8 +33,8 @@ export class HeaderComponent implements OnInit {
   
 
   logout(): void {
-    this.authService.logout().subscribe(() => {
-      this.userName = null; // Réinitialiser après la déconnexion
-    });
+    this.authService.logout();
+    this.router.navigate(['/Accueil']);
+
   }
 }

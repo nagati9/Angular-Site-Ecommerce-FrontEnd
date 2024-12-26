@@ -17,7 +17,7 @@ export class SkincareComponent implements OnInit {
     constructor(private skincareService: SkincareService) {}
 
     ngOnInit(): void {
-        this.skincareService.getSkincare().subscribe(data => {
+        this.skincareService.getProduitsParType(2).subscribe(data => {
             this.skincare = data;
         });
     }

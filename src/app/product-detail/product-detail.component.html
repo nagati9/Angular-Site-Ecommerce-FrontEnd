@@ -10,7 +10,7 @@
       </p>
       <p class="product-price">Prix: {{ product.prix }} €</p>
       <div class="product-actions">
-        <button class="add-to-cart">Add to Cart</button>
+        <button (click)="addToCart(product.id,1)">Ajouter au panier</button>
       </div>
     </div>
   </div>

@@ -7,11 +7,11 @@ import { Skincare } from '../models/skincare.model';
     providedIn: 'root'
 })
 export class SkincareService {
-    private apiUrl = `${environment.apiUrl}/Skincare`;
+    private apiUrl = `${environment.apiUrl}/Produit/GetProduitParType`;
 
     constructor(private http: HttpClient) {}
 
-    getSkincare(): Observable<Skincare[]> {
-        return this.http.get<Skincare[]>(this.apiUrl);
+    getProduitsParType(type: number): Observable<Skincare[]> {
+        return this.http.get<Skincare[]>(`${this.apiUrl}/${type}`);
     }
 }

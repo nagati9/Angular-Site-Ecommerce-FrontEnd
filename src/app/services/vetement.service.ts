@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class VetementService {
- private apiUrl = `${environment.apiUrl}/Vetements`;
+  private apiUrl = `${environment.apiUrl}/Produit/GetProduitParType`;
 
     constructor(private http: HttpClient) {}
 
-    getSkincare(): Observable<Vetement[]> {
-        return this.http.get<Vetement[]>(this.apiUrl);
+    getProduitsParType(type: number): Observable<Vetement[]> {
+        return this.http.get<Vetement[]>(`${this.apiUrl}/${type}`);
     }
 }

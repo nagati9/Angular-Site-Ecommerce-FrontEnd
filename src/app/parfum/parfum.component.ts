@@ -17,7 +17,7 @@ export class ParfumComponent implements OnInit {
     constructor(private parfumService: ParfumService) {}
 
     ngOnInit(): void {
-        this.parfumService.getParfums().subscribe(data => {
+        this.parfumService.getProduitsParType(1).subscribe(data => {
             this.parfums = data;
         });
     }
