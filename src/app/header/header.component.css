@@ -86,3 +86,31 @@
   text-decoration: none;
   color: #0056b3;
 }
+.cart-icon-container {
+  position: relative;
+  display: inline-block;
+}
+
+.icon-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 24px;
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px; /* Ajustez la position verticale */
+  right: -10px; /* Ajustez la position horizontale */
+  background-color: #ff0000; /* Rouge vif */
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

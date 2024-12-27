@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PanierService } from '../services/panier.service';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-product-detail',
   imports: [CommonModule],
@@ -28,6 +29,7 @@ export class ProductDetailComponent implements OnInit {
   public addToCart(id: any,quantite: any): void {
     this.panierService.addToCart(id, quantite).subscribe(
       (response) => {
+        this.panierService.updateCartItemCount();
         console.log('Produit ajouté au panier avec succès !', response);
       },
       (error) => {

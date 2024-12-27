@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
-  imports: [CommonModule, RouterLink, FormsModule, ReactiveFormsModule, LoginComponent] ,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule] ,
 })
 export class LoginComponent {
 loginForm: any;

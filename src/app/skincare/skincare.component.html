@@ -2,6 +2,11 @@
   <div class="skincare-card" *ngFor="let skin of skincare">
     <img [src]="skin.photoPath" alt="{{ skin.nom }}" class="skincare-image" />
     <h3 class="skincare-name">{{ shortenName(skin.nom) }}</h3>
+    <div class="actions">
+      <button class="btn-icon-add-to-cart" (click)="addToCart(skin.id,1)">
+        <i class="fas fa-cart-plus"></i>
+      </button>
+    </div>
     <p class="skincare-marque">{{ skin.marque?.nom }}</p>
     <p>{{skin.prix}} $</p>
     <button [routerLink]="['/product', 'skin', skin.id]" [state]="skin"  class="details-button">

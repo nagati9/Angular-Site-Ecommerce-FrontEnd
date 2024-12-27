@@ -3,7 +3,9 @@ import { ParfumService } from '../services/parfum.service';
 import { Parfum } from '../models/parfum.model';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-
+import { ProductDetailComponent } from '../product-detail/product-detail.component';
+import { PanierService } from '../services/panier.service';
+import { ProduitService } from '../services/produit.service';
 @Component({
   selector: 'app-parfum',
   templateUrl: './parfum.component.html',
@@ -13,8 +15,15 @@ import { RouterLink } from '@angular/router';
 })
 export class ParfumComponent implements OnInit {
     parfums: Parfum[] = [];
+   
+   
 
-    constructor(private parfumService: ParfumService) {}
+    constructor(
+        private parfumService: ParfumService, // Pour gérer les parfums
+        private panierService: PanierService // Pour gérer le panier
+      ) {}
+    
+    
 
     ngOnInit(): void {
         this.parfumService.getProduitsParType(1).subscribe(data => {
@@ -29,5 +38,12 @@ export class ParfumComponent implements OnInit {
         return nom;
        }
     }
-    
+   
+       
+      
+      public addToCart(id: any,quantite: any): void {
+        this.panierService.addToCart(id,1).subscribe(() => {
+          this.panierService.updateCartItemCount(); // Met à jour le compteur
+        });
+    }
 }

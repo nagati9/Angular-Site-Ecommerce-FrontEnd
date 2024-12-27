@@ -77,3 +77,32 @@
   transform: translateY(0);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
 }
+.details-button {
+  margin: 10px auto;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #9e99a0;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+}
+
+.details-button:hover {
+  background-color: #b3a0c5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.details-button:active {
+  background-color: #1e8449;
+  transform: translateY(0);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}

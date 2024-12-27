@@ -4,6 +4,7 @@ import { VetementService } from '../services/vetement.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { PanierService } from '../services/panier.service';
 
 @Component({
   selector: 'app-vetement',
@@ -14,7 +15,8 @@ import { RouterLink } from '@angular/router';
 export class VetementComponent {
   vetement: Vetement[] = [];
 
-    constructor(private vetementService: VetementService) {}
+    constructor(private vetementService: VetementService, 
+      private panierService: PanierService) {}
 
     ngOnInit(): void {
         this.vetementService.getProduitsParType(3).subscribe(data => {
@@ -29,4 +31,9 @@ export class VetementComponent {
       return nom;
      }
   }
+  public addToCart(id: any,quantite: any): void {
+    this.panierService.addToCart(id,1).subscribe(() => {
+      this.panierService.updateCartItemCount(); // Met à jour le compteur
+    });
+}
 }

@@ -1,22 +1,16 @@
-<!-- <h2>Liste des Parfums</h2>
-<ul>
-  <li *ngFor="let parfum of parfums">
-    <strong>{{ parfum.nom }}</strong> - 
-    Prix : {{ parfum.prix }} € - 
-    Stock : {{ parfum.stock }} - 
-    Type : {{ parfum.type?.nom }} - 
-    Marque : {{ parfum.marque?.nom }}
-  </li>
-</ul> -->
 <div class="parfum-container">
   <div class="parfum-card" *ngFor="let parfum of parfums">
     <img [src]="parfum.photoPath" alt="{{ parfum.nom }}" class="parfum-image" />
     <h3 class="parfum-name">{{ shortenName(parfum.nom) }}</h3>
+    <div class="actions">
+      <button class="btn-icon-add-to-cart" (click)="addToCart(parfum.id,1)">
+        <i class="fas fa-cart-plus"></i>
+      </button>
+    </div>
     <p class="parfum-marque">{{ parfum.marque?.nom }}</p>
-    <p>{{parfum.prix}} $</p>
+    <p>{{ parfum.prix }} $</p>
     <button [routerLink]="['/product', 'parfum', parfum.id]" [state]="parfum" class="details-button">
       Voir les détails
     </button>
   </div>
 </div>
-

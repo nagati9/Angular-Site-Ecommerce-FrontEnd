@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SkincareComponent } from '../skincare/skincare.component';
-import { VetementComponent } from '../vetement/vetement.component';
-import { ParfumComponent } from '../parfum/parfum.component';
-import { AccueilComponent } from '../accueil/accueil.component';
 import { CommonModule } from '@angular/common';
+import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { RouterLink } from '@angular/router';
-import { LoginComponent } from '../auth/login/login.component';
-import { catchError, of } from 'rxjs';
+import { PanierService } from '../services/panier.service';
+
 @Component({
   selector: 'app-header',
   imports: [CommonModule, RouterLink],
@@ -16,11 +12,16 @@ import { catchError, of } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   userName: string | null = null;
-  router: any;
+  cartItemCount: number = 0;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private panierService: PanierService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    // Récupérer l'utilisateur actuel
     this.authService.getCurrentUser().subscribe(
       (response) => {
         this.userName = response.userName; // Stocke le nom de l'utilisateur
@@ -29,12 +30,20 @@ export class HeaderComponent implements OnInit {
         console.log('Aucun utilisateur connecté.', error);
       }
     );
+
+      // Écouter les modifications du panier
+      this.panierService.getCartItemCount().subscribe((count) => {
+        this.cartItemCount = count;
+      });
+       // Initialiser le compteur d'articles
+    this.panierService.updateCartItemCount();
   }
-  
+
+ 
 
   logout(): void {
     this.authService.logout();
+    this.userName = null;
     this.router.navigate(['/Accueil']);
-
   }
 }

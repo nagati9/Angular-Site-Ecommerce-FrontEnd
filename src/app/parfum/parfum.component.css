@@ -7,8 +7,8 @@
 }
 
 .parfum-card {
-  width: 350px; /* Augmenter la largeur des cartes */
-  height: 500px; /* Augmenter la hauteur des cartes */
+  width: 350px;
+  height: 500px;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -27,31 +27,59 @@
 }
 
 .parfum-image {
-  width: 100%; /* Utiliser la largeur complète de la carte */
-  height: 300px; /* Agrandir les images */
-  object-fit: cover; /* Garder les proportions de l'image */
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
   border-bottom: 1px solid #ddd;
 }
 
 .parfum-name {
   margin: 10px 0 5px;
-  font-size: 1.4rem; /* Agrandir légèrement la police */
+  font-size: 1.4rem;
   color: #333;
-  flex: 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.btn-icon-add-to-cart {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-icon-add-to-cart i {
+  color: #666;
+  font-size: 16px;
+}
+
+.btn-icon-add-to-cart:hover {
+  background-color: #e0e0e0;
+  border-color: #999;
 }
 
 .parfum-marque {
   font-size: 1rem;
   color: #666;
   margin-bottom: 10px;
-  flex: 0;
 }
 
 .details-button {
-  margin: 10px auto; /* Centrer horizontalement */
+  margin: 10px auto;
   display: inline-block;
-  padding: 10px 20px; /* Ajuster la taille du bouton */
-  font-size: 1.1rem; /* Agrandir la police */
+  padding: 10px 20px;
+  font-size: 1.1rem;
   font-weight: bold;
   color: #ffffff;
   background-color: #9e99a0;
@@ -63,7 +91,6 @@
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 200px;
-  
 }
 
 .details-button:hover {
