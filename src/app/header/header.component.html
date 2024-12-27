@@ -32,7 +32,7 @@
         <a routerLink="/register" class="icon-link"><i class="fas fa-user"></i></a>
       </ng-template>
 
-      <div class="cart-icon-container">
+      <div *ngIf="isOnline" class="cart-icon-container">
         <a routerLink="/panier" class="icon-link">
           <i class="fas fa-shopping-cart"></i>
           <span class="cart-badge">{{ cartItemCount }}</span>

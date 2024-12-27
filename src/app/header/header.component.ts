@@ -13,11 +13,13 @@ import { PanierService } from '../services/panier.service';
 export class HeaderComponent implements OnInit {
   userName: string | null = null;
   cartItemCount: number = 0;
+  isOnline: boolean=false;
 
   constructor(
     private authService: AuthService,
     private panierService: PanierService,
     private router: Router
+    
   ) {}
 
   ngOnInit(): void {
@@ -25,6 +27,7 @@ export class HeaderComponent implements OnInit {
     this.authService.getCurrentUser().subscribe(
       (response) => {
         this.userName = response.userName; // Stocke le nom de l'utilisateur
+        this.isOnline=true;
       },
       (error) => {
         console.log('Aucun utilisateur connecté.', error);
