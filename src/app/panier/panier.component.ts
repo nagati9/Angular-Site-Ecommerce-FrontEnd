@@ -18,13 +18,18 @@ export class PanierComponent {
   produitsPanier: any[] = []; // Liste des produits dans le panier
   errorMessage: string | null = null; // Message d'erreur
   total: number = 0; // Somme totale des produits
+  nbProduits: number =0;
 
 constructor(private panierService: PanierService) {}
 ngOnInit(): void {
   this.panierService.getPanier().subscribe(
     (data) => {
       this.produitsPanier = data;
+      console.log('nb oninit=', this.produitsPanier.length)
       this.calcultotal(); 
+      this.panierService.getCartItemCount().subscribe((count) => {
+        this.nbProduits = count;
+      });
     },
     (error) => {
       this.errorMessage = 'Impossible de récupérer les produits du panier.';
@@ -78,6 +83,7 @@ retirerProduits(id: number): void {
           produit.quantite = nouvelleQuantite;
           this.calcultotal();
           this.panierService.updateCartItemCount();
+          console.log('nb=', this.produitsPanier.length)
         },
         (error: any) => {
           console.error('Erreur lors de la mise à jour de la quantité du produit :', error);
@@ -86,6 +92,7 @@ retirerProduits(id: number): void {
     }
 else{
 this.retirerProduits(produit.produitId);
+console.log('nb=', this.produitsPanier.length)
 }
   
   }
