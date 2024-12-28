@@ -35,13 +35,21 @@ ngOnInit(): void {
   );
 }
 calcultotal(): void {
-  // Calculer la somme totale des produits
-  this.total = this.produitsPanier.reduce((acc, produit) => {
-    return acc + produit.produitPrix * produit.quantite;
-  }, 0);
+  if (Array.isArray(this.produitsPanier)) {
+    this.total = this.produitsPanier.reduce((acc, produit) => {
+      const prix = produit.produitPrix || 0; // Valeur par défaut si produitPrix est indéfini
+      const quantite = produit.quantite || 0; // Valeur par défaut si quantite est indéfinie
+      return acc + prix * quantite;
+    }, 0);
+  } else {
+    console.error('this.produitsPanier n\'est pas un tableau:', this.produitsPanier);
+    this.total = 0; // Ou une autre valeur par défaut appropriée
+  }
 }
+
 retirerProduits(): void {
-  // Filtrer les produits non sélectionnés pour les garder dans le panier
+  console.log("Produits dans le panier :", this.produitsPanier);
+
   const produitsASupprimer = this.produitsPanier.filter(produit => produit.selected);
 
   if (produitsASupprimer.length === 0) {
@@ -50,11 +58,14 @@ retirerProduits(): void {
   }
 
   produitsASupprimer.forEach(produit => {
-    this.panierService.removeFromCart(produit.id).subscribe({
+    console.log("Produit à supprimer :", produit);
+
+    this.panierService.removeFromCart(produit.produitId, produit.quantite).subscribe({
       next: () => {
-        this.produitsPanier = this.produitsPanier.filter(p => p.id !== produit.id);
+        this.produitsPanier = this.produitsPanier.filter(p => p.id !== produit.produitId);
         this.calcultotal(); // Recalculer le total
         this.panierService.updateCartItemCount();
+        location.reload();
       },
       error: (err: any) => {
         console.error("Erreur lors de la suppression du produit :", err);
@@ -62,4 +73,5 @@ retirerProduits(): void {
     });
   });
 }
+
 }

@@ -6,6 +6,8 @@ import { RouterLink } from '@angular/router';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { PanierService } from '../services/panier.service';
 import { ProduitService } from '../services/produit.service';
+import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-parfum',
   templateUrl: './parfum.component.html',
@@ -15,18 +17,20 @@ import { ProduitService } from '../services/produit.service';
 })
 export class ParfumComponent implements OnInit {
     parfums: Parfum[] = [];
-   
+    isOnline$!: Observable<boolean>;
    
 
     constructor(
         private parfumService: ParfumService, // Pour gérer les parfums
-        private panierService: PanierService // Pour gérer le panier
+        private panierService: PanierService , 
+        private authService: AuthService// Pour gérer le panier
       ) {}
     
     
 
     ngOnInit(): void {
         this.parfumService.getProduitsParType(1).subscribe(data => {
+          this.isOnline$=this.authService.isOnline$;
             this.parfums = data;
         });
     }

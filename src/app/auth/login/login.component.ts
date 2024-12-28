@@ -27,10 +27,19 @@ onSubmit() {
     const credentials = this.loginForm.value;
     this.authService.login(credentials).subscribe(
       (response) => {
-        localStorage.setItem('token', response.token); // Stocker le token
-        localStorage.setItem('userName', response.userName); // Stocker le nom
-        this.router.navigate(['/Accueil']);
-         location.reload();
+        // Stocker le token et les informations utilisateur
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('userName', response.userName);
+        console.log('Navigation vers /Accueil...');
+        this.router.navigate(['/Accueil']).then(
+          () => {
+            console.log('Navigation réussie.');
+            location.reload(); // Rafraîchit la page
+          },
+          (error) => {
+            console.error('Erreur de navigation :', error);
+          }
+        );
       },
       (error) => {
         console.error('Erreur lors de la connexion :', error);

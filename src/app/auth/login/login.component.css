@@ -1,0 +1,88 @@
+/* Conteneur principal */
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto; /* Centrage horizontal */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Titre */
+  .auth-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Champ de formulaire */
+  .auth-container form div {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  /* Labels */
+  .auth-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  /* Inputs */
+  .auth-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+  
+  .auth-container input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Bouton */
+  .auth-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .auth-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .auth-container button:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  /* Messages d'erreur */
+  .auth-container small {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #e74c3c; /* Rouge vif pour les erreurs */
+  }
+  
+  /* Adaptation mobile */
+  @media (max-width: 500px) {
+    .auth-container {
+      margin: 20px;
+      padding: 15px;
+    }
+  }
+  

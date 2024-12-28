@@ -3,9 +3,12 @@
       <img [src]="vet.photoPath" alt="{{ vet.nom }}" class="vet-image" />
       <h3 class="vet-name">{{ shortenName(vet.nom)  }}</h3>
       <div class="actions">
-        <button class="btn-icon-add-to-cart" (click)="addToCart(vet.id,1)">
+        <button class="btn-icon-add-to-cart" *ngIf="isOnline$ | async; else redirectToLogin" (click)="addToCart(vet.id, 1)">
           <i class="fas fa-cart-plus"></i>
         </button>
+        <ng-template #redirectToLogin>
+          <button routerLink="/signin" class="btn-icon-add-to-cart"><i class="fas fa-cart-plus"></i></button>
+        </ng-template>
       </div>
       <p class="vet-marque">{{ vet.marque?.nom }}</p>
       <p>{{vet.prix}} $</p>

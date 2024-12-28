@@ -4,6 +4,8 @@ import { Skincare } from '../models/skincare.model';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PanierService } from '../services/panier.service';
+import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-skincare',
@@ -14,13 +16,14 @@ import { PanierService } from '../services/panier.service';
 })
 export class SkincareComponent implements OnInit {
     skincare: Skincare[] = [];
- 
+  isOnline$!: Observable<boolean>;
 
     constructor(private skincareService: SkincareService, 
-        private panierService: PanierService ){}
+        private panierService: PanierService, private authService: AuthService ){}
 
     ngOnInit(): void {
         this.skincareService.getProduitsParType(2).subscribe(data => {
+            this.isOnline$=this.authService.isOnline$;
             this.skincare = data;
         });
     }

@@ -27,6 +27,8 @@ export class PanierService {
 
     return this.http.get<PanierProduit[]>(`${this.apiUrl}/PanierProduit/GetProduitsPanier`, { headers });
   }
+
+  
   getCartItemCount(): Observable<number> {
     return this.cartItemCountSubject.asObservable();
   }
@@ -34,9 +36,29 @@ export class PanierService {
   // Mise à jour du nombre d'articles dans le panier
   updateCartItemCount(): void {
     this.getPanier().subscribe((produits: any[]) => {
-      this.cartItemCountSubject.next(produits.length);
+      console.log('Données du panier:', produits);
+  
+      if (!produits || produits.length === 0) {
+        this.cartItemCountSubject.next(0); // Aucun produit dans le panier
+        return;
+      }
+  
+      // Initialiser la somme totale des items
+      let totalItemsCount = 0;
+  
+      // Boucle sur chaque produit pour additionner les quantités
+      produits.forEach((produit) => {
+        totalItemsCount += produit.quantite || 0; // Ajouter la quantité ou 0 si non défini
+      });
+  
+      // Mettre à jour le sujet avec le nombre total d'items
+      this.cartItemCountSubject.next(totalItemsCount);
+  
+      console.log(`Total articles dans le panier : ${totalItemsCount}`);
     });
   }
+  
+  
     
   addToCart(produitId: number, quantite: number): Observable<any> {
     const token = localStorage.getItem('token'); // Récupérer le token JWT du stockage local
@@ -48,10 +70,10 @@ export class PanierService {
       { headers }
     );
   }
-  removeFromCart(id: number): Observable<any> {
+  removeFromCart(id: number, quantite: number): Observable<any> {
     const token = localStorage.getItem('token'); // Ajouter le JWT
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
-    return this.http.delete(`${this.apiUrl}/PanierProduit/Delete/${id}`, { headers });
+    return this.http.delete(`${this.apiUrl}/PanierProduit/DeleteFromPanier/${id}/${quantite}`, { headers });
   }
 }

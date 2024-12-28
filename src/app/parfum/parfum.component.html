@@ -3,9 +3,12 @@
     <img [src]="parfum.photoPath" alt="{{ parfum.nom }}" class="parfum-image" />
     <h3 class="parfum-name">{{ shortenName(parfum.nom) }}</h3>
     <div class="actions">
-      <button class="btn-icon-add-to-cart" (click)="addToCart(parfum.id,1)">
+      <button class="btn-icon-add-to-cart" *ngIf="isOnline$ | async; else redirectToLogin" (click)="addToCart(parfum.id, 1)">
         <i class="fas fa-cart-plus"></i>
       </button>
+      <ng-template #redirectToLogin>
+        <button routerLink="/signin" class="btn-icon-add-to-cart"><i class="fas fa-cart-plus"></i></button>
+      </ng-template>
     </div>
     <p class="parfum-marque">{{ parfum.marque?.nom }}</p>
     <p>{{ parfum.prix }} $</p>

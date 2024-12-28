@@ -1,18 +1,22 @@
 <div class="product-detail">
-    <div class="product-image">
-      <img [src]="product.photoPath" alt="{{ product.nom }}" />
-    </div>
-    <div class="product-info">
-      <h1>{{ product.nom }}</h1>
-      <h3>Marque: {{ product.marque?.nom }}</h3>
-      <p class="product-description">
-        This is a placeholder description for {{ product.nom }}. It’s a great product from {{ product.marque?.nom }} that you’ll love!
-      </p>
-      <p class="product-price">Prix: {{ product.prix }} €</p>
-      <div class="product-actions">
-        <button (click)="addToCart(product.id,1)">Ajouter au panier</button>
-      </div>
+  <div class="product-image">
+    <img [src]="product.photoPath" alt="{{ product.nom }}" />
+  </div>
+  <div class="product-info">
+    <h1>{{ product.nom }}</h1>
+    <h3>Marque: {{ product.marque?.nom }}</h3>
+    <p class="product-description">
+      This is a placeholder description for {{ product.nom }}. It’s a great product from {{ product.marque?.nom }} that
+      you’ll love!
+    </p>
+    <p class="product-price">Prix: {{ product.prix }} €</p>
+    <div class="product-actions">
+      <button *ngIf="isOnline$ | async; else redirectToLogin" (click)="addToCart(product.id, 1)">
+        Ajouter au panier
+      </button>
+      <ng-template #redirectToLogin>
+        <button routerLink="/signin">Ajouter au panier</button>
+      </ng-template>
     </div>
   </div>
-  
- 
+</div>
