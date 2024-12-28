@@ -45,6 +45,6 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('userName');
     this.userSubject.next(null); // Réinitialise l'état utilisateur
-    location.reload(); // Force le rechargement de la page
+   
   }
 }

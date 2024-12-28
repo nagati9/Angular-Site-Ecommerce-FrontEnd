@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { PanierService } from '../services/panier.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ import { PanierService } from '../services/panier.service';
 export class HeaderComponent implements OnInit {
   userName: string | null = null;
   cartItemCount: number = 0;
-  isOnline: boolean=false;
+  currentUser$:Observable<boolean> | undefined;
 
   constructor(
     private authService: AuthService,
@@ -27,7 +28,7 @@ export class HeaderComponent implements OnInit {
     this.authService.getCurrentUser().subscribe(
       (response) => {
         this.userName = response.userName; // Stocke le nom de l'utilisateur
-        this.isOnline=true;
+        this.currentUser$=this.authService.isOnline$;
       },
       (error) => {
         console.log('Aucun utilisateur connecté.', error);
@@ -47,6 +48,14 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.userName = null;
-    this.router.navigate(['/Accueil']);
+    this.router.navigate(['/Accueil']).then(
+      () => {
+        console.log('Navigation réussie.');
+        location.reload(); // Rafraîchit la page
+      },
+      (error) => {
+        console.error('Erreur de navigation :', error);
+      }
+    );
   }
 }
