@@ -5,14 +5,8 @@
   <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
   </div>
-
-  <!-- Message si le panier est vide -->
-  <div *ngIf="produitsPanier.length === 0 && !errorMessage" class="empty-message">
-    <p>Votre panier est vide.</p>
-  </div>
-
   <!-- Afficher les produits dans le panier -->
-  <div *ngIf="produitsPanier.length > 0" class="panier-list">
+  <div *ngIf="nbProduits > 0" class="panier-list">
     <div *ngFor="let produit of produitsPanier" class="panier-item">
       <div class="panier-photo">
         <img [src]="produit.produitPhotos" alt="Photo du produit" />
@@ -33,6 +27,10 @@
     <div class="total-container">
       <h3>Total : {{ total | currency: 'EUR' }}</h3>
     </div>
+  </div>
+   <!-- Message si le panier est vide -->
+   <div *ngIf="nbProduits == 0 && !errorMessage" class="empty-message">
+    <p>Votre panier est vide.</p>
   </div>
 
   
