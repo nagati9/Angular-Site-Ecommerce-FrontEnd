@@ -9,6 +9,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ProduitComponent } from './produit/produit.component';
 import { PanierComponent } from './panier/panier.component';
+import { AboutComponent } from './about/about.component';
 
 export const routes: Routes = [
   { path: 'parfums', component: ParfumComponent },
@@ -19,6 +20,7 @@ export const routes: Routes = [
   { path: 'signin', component: LoginComponent },
   { path: 'panier', component: PanierComponent },
   { path: 'prod', component: ProduitComponent },
+  { path: 'About', component: AboutComponent },
   { path: 'product/:type/:id', component: ProductDetailComponent },
   { path: '', redirectTo: '/Accueil', pathMatch: 'full' }, // Route par défaut
 ];

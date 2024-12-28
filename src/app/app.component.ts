@@ -10,7 +10,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ParfumComponent, SkincareComponent, VetementComponent, HeaderComponent, AccueilComponent],
+  imports: [RouterOutlet,  HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

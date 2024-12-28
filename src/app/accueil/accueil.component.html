@@ -1,4 +1,8 @@
-<carousel [interval]="3000" [noPause]="true" [showIndicators]="true">
+
+   
+  <body>
+    <!-- Carousel existant -->
+   <carousel [interval]="3000" [noPause]="true" [showIndicators]="true">
   <slide>
     <div class="carousel-container">
       <img src="Beauty.jpeg" alt="Image 1" class="carousel-image" />
@@ -24,3 +28,74 @@
     </div>
   </slide>
 </carousel>
+
+    <!-- Section Présentation de la Marque -->
+    <section class="brand-intro">
+        <div class="container">
+            <h2>Bienvenue chez [Nom de la Boutique]</h2>
+            <p>Découvrez l'élégance et le raffinement à travers notre sélection exclusive de produits de luxe. Chaque pièce est choisie avec soin pour vous offrir une expérience inégalée.</p>
+        </div>
+    </section>
+
+    <!-- Section Produits Phare -->
+    <section class="featured-products">
+        <div class="container">
+            <h2>Nos Produits Phare</h2>
+            <div class="product-grid">
+                <!-- Produit 1 -->
+                <div class="product-item">
+                    <img src="produit1.jpg" alt="Produit 1">
+                    <h3>Produit 1</h3>
+                    <p>Description courte du produit 1.</p>
+                    <a href="#" class="btn">Découvrir</a>
+                </div>
+                <!-- Produit 2 -->
+                <div class="product-item">
+                    <img src="produit2.jpg" alt="Produit 2">
+                    <h3>Produit 2</h3>
+                    <p>Description courte du produit 2.</p>
+                    <a href="#" class="btn">Découvrir</a>
+                </div>
+                <!-- Produit 3 -->
+                <div class="product-item">
+                    <img src="produit3.jpg" alt="Produit 3">
+                    <h3>Produit 3</h3>
+                    <p>Description courte du produit 3.</p>
+                    <a href="#" class="btn">Découvrir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Témoignages Clients -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Ce que disent nos clients</h2>
+            <div class="testimonial-slider">
+                <!-- Témoignage 1 -->
+                <div class="testimonial-item">
+                    <p>"Une expérience d'achat exceptionnelle. Les produits sont de haute qualité et le service est impeccable."</p>
+                    <h4>- Client Satisfait</h4>
+                </div>
+                <!-- Témoignage 2 -->
+                <div class="testimonial-item">
+                    <p>"Je recommande vivement cette boutique pour ses articles uniques et son professionnalisme."</p>
+                    <h4>- Client Heureux</h4>
+                </div>
+                <!-- Témoignage 3 -->
+                <div class="testimonial-item">
+                    <p>"Des produits de luxe qui dépassent mes attentes à chaque commande."</p>
+                    <h4>- Client Fidèle</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À Propos de Nous -->
+    <section class="about-us">
+        <div class="container">
+            <h2>À Propos de Nous</h2>
+            <p>Depuis [année], [Nom de la Boutique] s'engage à fournir des produits de luxe exceptionnels à une clientèle exigeante. Notre passion pour l'excellence et notre dévouement à la satisfaction de nos clients sont au cœur de notre mission.</p>
+        </div>
+    </section>
+</body>
