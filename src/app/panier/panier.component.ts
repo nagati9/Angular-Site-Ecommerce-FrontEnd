@@ -47,22 +47,19 @@ calcultotal(): void {
   }
 }
 
-retirerProduits(): void {
+retirerProduits(id: number): void {
   console.log("Produits dans le panier :", this.produitsPanier);
 
-  const produitsASupprimer = this.produitsPanier.filter(produit => produit.selected);
+  const produitsASupprimer = id;
 
-  if (produitsASupprimer.length === 0) {
+  if (produitsASupprimer==null) {
     alert("Aucun produit sélectionné pour suppression.");
     return;
   }
 
-  produitsASupprimer.forEach(produit => {
-    console.log("Produit à supprimer :", produit);
-
-    this.panierService.removeFromCart(produit.produitId, produit.quantite).subscribe({
+    this.panierService.removeFromCart(produitsASupprimer).subscribe({
       next: () => {
-        this.produitsPanier = this.produitsPanier.filter(p => p.id !== produit.produitId);
+        
         this.calcultotal(); // Recalculer le total
         this.panierService.updateCartItemCount();
         location.reload();
@@ -71,7 +68,26 @@ retirerProduits(): void {
         console.error("Erreur lors de la suppression du produit :", err);
       }
     });
-  });
+  }
+
+ modifierQuantite(produit: any, changement: number): void {
+    const nouvelleQuantite = produit.quantite + changement;
+    if (nouvelleQuantite > 0) {
+      this.panierService.updateCartItem(produit.produitId, nouvelleQuantite).subscribe(
+        () => {
+          produit.quantite = nouvelleQuantite;
+          this.calcultotal();
+          this.panierService.updateCartItemCount();
+        },
+        (error: any) => {
+          console.error('Erreur lors de la mise à jour de la quantité du produit :', error);
+        }
+      );
+    }
+else{
+this.retirerProduits(produit.produitId);
 }
+  
+  }
 
 }

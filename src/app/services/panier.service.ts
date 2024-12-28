@@ -70,10 +70,15 @@ export class PanierService {
       { headers }
     );
   }
-  removeFromCart(id: number, quantite: number): Observable<any> {
+  removeFromCart(id: number): Observable<any> {
     const token = localStorage.getItem('token'); // Ajouter le JWT
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
-    return this.http.delete(`${this.apiUrl}/PanierProduit/DeleteFromPanier/${id}/${quantite}`, { headers });
+    return this.http.delete(`${this.apiUrl}/PanierProduit/DeleteFromPanier/${id}`, { headers });
+  }
+  updateCartItem(produitId: number, quantite: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.apiUrl}/PanierProduit/UpdateCartItem/${produitId}/${quantite}`, null, { headers });
   }
 }

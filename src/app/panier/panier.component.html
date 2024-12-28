@@ -1,51 +1,40 @@
 <div class="panier-container">
-    <h2>Votre Panier</h2>
-  
-    <!-- Afficher un message d'erreur -->
-    <div *ngIf="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </div>
-  
-    <!-- Message si le panier est vide -->
-    <div *ngIf="produitsPanier.length === 0 && !errorMessage" class="empty-message">
-      <p>Votre panier est vide.</p>
-    </div>
-  
-    <!-- Afficher les produits dans le panier -->
-    <div *ngIf="produitsPanier.length > 0" class="panier-list">
-      <div *ngFor="let produit of produitsPanier" class="panier-item">
-        <div class="panier-checkbox">
-          <input type="checkbox" [(ngModel)]="produit.selected" />
-        </div>
-        <div class="panier-photo">
-          <img [src]="produit.produitPhotos" alt="Photo du produit" />
-        </div>
-        <div class="panier-details">
-          <h4>{{ produit.produitNom }}</h4>
-          <p>
-            <strong>Type:</strong>
-            <span *ngIf="produit.typeProduit === 1">Parfum</span>
-            <span *ngIf="produit.typeProduit === 2">Skincare</span>
-            <span *ngIf="produit.typeProduit === 3">Vêtement</span>
-          </p>
-          <p>
-            <strong>Marque:</strong>
-            <span *ngIf="produit.marqueParfum">{{ produit.marqueParfum.nom }}</span>
-            <span *ngIf="produit.marqueSkincare">{{ produit.marqueSkincare.nom }}</span>
-            <span *ngIf="produit.marqueVetement">{{ produit.marqueVetement.nom }}</span>
-          </p>
-          <p><strong>Prix:</strong> {{ produit.produitPrix | currency: 'EUR' }}</p>
-          <p><strong>Quantité:</strong> {{ produit.quantite }}</p>
-          <p><strong>Sous-total:</strong> {{ produit.produitPrix * produit.quantite | currency: 'EUR' }}</p>
-        </div>
-      </div>
-      <div class="total-container">
-        <h3 *ngIf="total > 0">Total : {{ total | currency: 'EUR' }}</h3>
-        <p *ngIf="produitsPanier.length === 0 && !errorMessage">Votre panier est vide.</p>
-      </div>
-    </div>
-  
-    <!-- Bouton pour supprimer les articles sélectionnés -->
-    <button (click)="retirerProduits()" class="btn btn-danger">Retirer les articles sélectionnés</button>
+  <h2>Votre Panier</h2>
+
+  <!-- Afficher un message d'erreur -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
   </div>
+
+  <!-- Message si le panier est vide -->
+  <div *ngIf="produitsPanier.length === 0 && !errorMessage" class="empty-message">
+    <p>Votre panier est vide.</p>
+  </div>
+
+  <!-- Afficher les produits dans le panier -->
+  <div *ngIf="produitsPanier.length > 0" class="panier-list">
+    <div *ngFor="let produit of produitsPanier" class="panier-item">
+      <div class="panier-photo">
+        <img [src]="produit.produitPhotos" alt="Photo du produit" />
+      </div>
+      <div class="panier-details">
+        <h4>{{ produit.produitNom }}</h4>
+        <p><strong>Prix:</strong> {{ produit.produitPrix | currency: 'EUR' }}</p>
+        <p>
+          <strong>Quantité:</strong>
+          <button class="quantity-btn minus" (click)="modifierQuantite(produit, -1)" [disabled]="produit.quantite < 1">-</button>
+<span class="quantity">{{ produit.quantite }}</span>
+<button class="quantity-btn plus" (click)="modifierQuantite(produit, 1)">+</button>
+
+        </p>
+        <p><strong>Sous-total:</strong> {{ produit.produitPrix * produit.quantite | currency: 'EUR' }}</p>
+      </div>
+    </div>
+    <div class="total-container">
+      <h3>Total : {{ total | currency: 'EUR' }}</h3>
+    </div>
+  </div>
+
   
+  
+</div>
