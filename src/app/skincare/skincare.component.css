@@ -4,6 +4,7 @@
   gap: 20px;
   justify-content: center;
   margin: 20px;
+
 }
 
 .skincare-card {
@@ -105,4 +106,38 @@
   background-color: #1e8449;
   transform: translateY(0);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}
+.actions {
+  display: flex;
+  justify-content: flex-end; /* Aligne le bouton à droite */
+  margin-top: 1rem; /* Espace au-dessus du bouton */
+}
+
+.btn-icon-add-to-cart {
+  background-color: rgba(108, 117, 125, 0.5); /* Gris avec transparence */
+  color: #ffffff; /* Couleur du texte blanche */
+  border: none; /* Supprime la bordure par défaut */
+  border-radius: 4px; /* Coins légèrement arrondis */
+  padding: 0.5rem; /* Espacement interne réduit */
+  font-size: 1rem; /* Taille de la police */
+  cursor: pointer; /* Curseur en forme de main */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease; /* Transition pour l'effet au survol */
+  width: auto; /* Largeur automatique pour s'adapter au contenu */
+  height: auto; /* Hauteur automatique pour s'adapter au contenu */
+}
+
+.btn-icon-add-to-cart i {
+  margin: 0; /* Supprime l'espace entre l'icône et le bord */
+}
+
+.btn-icon-add-to-cart:hover {
+  background-color: rgba(90, 98, 104, 0.5); /* Couleur légèrement plus foncée au survol */
+}
+
+.btn-icon-add-to-cart:focus {
+  outline: none; /* Supprime le contour par défaut lors du focus */
+  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5); /* Ombre pour indiquer le focus */
 }

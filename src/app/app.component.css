@@ -1,10 +1,15 @@
+/* Assurez-vous que le corps et le conteneur principal occupent toute la hauteur */
 html, body {
-    height: 100%;
-    margin: 0;
-  }
-  
-  .app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+  height: 100%;
+  margin: 0;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Assure que le conteneur occupe au moins la hauteur de la fenêtre */
+}
+
+.content {
+  flex: 1; /* Permet au contenu principal de s'étendre pour occuper l'espace disponible */
+}
