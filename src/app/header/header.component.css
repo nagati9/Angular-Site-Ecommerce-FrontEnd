@@ -1,5 +1,5 @@
 .header {
-  background-color: #fff;
+  background-color: #050a30;
   padding: 15px 30px;
   border-bottom: 1px solid #ddd;
 }
@@ -10,11 +10,9 @@
   align-items: center;
 }
 
-.logo .logo-link {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  text-decoration: none;
+#logo  {      
+  height: 85px;
+  width: 150px;
 }
 
 .nav-menu .menu-list {
@@ -25,7 +23,7 @@
 
 .nav-menu .menu-link {
   text-decoration: none;
-  color: #333;
+  color: #f2efeb;
   font-size: 16px;
   font-weight: 500;
 }
@@ -43,13 +41,18 @@
   display: block;
 }
 
-.dropdown-menu .dropdown-item {
+.dropdown-menu  {
   padding: 10px 20px;
   text-decoration: none;
-  color: #333;
+  color:#f2efeb;
   font-size: 14px;
 }
-
+.dropdown-item{
+  padding: 10px 20px;
+  text-decoration: none;
+  color:black;
+  font-size: 14px;
+}
 .icons {
   display: flex;
   align-items: center;
@@ -57,7 +60,7 @@
 }
 
 .icon-link {
-  color: #333;
+  color: black;
   font-size: 18px;
   text-decoration: none;
 }
@@ -65,7 +68,7 @@
 .user-name {
   font-size: 16px;
   font-weight: 500;
-  color: #333;
+  color: #f2efeb;
   margin-right: 10px;
   display: flex;
   align-items: center;
@@ -75,7 +78,7 @@
 .logout-button {
   background: none;
   border: none;
-  color: #007bff;
+  color: #f2efeb;
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
@@ -84,7 +87,7 @@
 
 .logout-button:hover {
   text-decoration: none;
-  color: #0056b3;
+  color:#f2efeb ;
 }
 .cart-icon-container {
   position: relative;
@@ -93,7 +96,7 @@
 
 .icon-link {
   text-decoration: none;
-  color: #333;
+  color: #f2efeb;
   font-size: 24px;
   position: relative;
 }

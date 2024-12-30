@@ -223,3 +223,109 @@ p {
   max-width: 800px;
   margin: 0 auto;
 }
+.parfum-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px;
+}
+
+.parfum-card {
+  width: 350px;
+  height: 500px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.parfum-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.parfum-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.parfum-name {
+  margin: 10px 0 5px;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.btn-icon-add-to-cart {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-icon-add-to-cart i {
+  color: #666;
+  font-size: 16px;
+}
+
+.btn-icon-add-to-cart:hover {
+  background-color: #e0e0e0;
+  border-color: #999;
+}
+
+.parfum-marque {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.details-button {
+  margin: 10px auto;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #9e99a0;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+}
+
+.details-button:hover {
+  background-color: #b3a0c5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.details-button:active {
+  background-color: #1e8449;
+  transform: translateY(0);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}

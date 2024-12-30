@@ -42,27 +42,21 @@
         <div class="container">
             <h2>Nos Produits Phare</h2>
             <div class="product-grid">
-                <!-- Produit 1 -->
-                <div class="product-item">
-                    <img src="produit1.jpg" alt="Produit 1">
-                    <h3>Produit 1</h3>
-                    <p>Description courte du produit 1.</p>
-                    <a href="#" class="btn">Découvrir</a>
+              <div class="produits-container">
+                <div class="parfum-container">
+                  <div class="parfum-card" *ngFor="let produit of produits.slice(0,3)">
+                    <img [src]="produit.photoPath" alt="{{ produit.nom }}" class="parfum-image" />
+                    <h3 class="parfum-name">{{ produit.nom }}</h3>
+                    <p class="parfum-marque">{{ produit.marqueParfum?.nom }}</p>
+                    <p>{{ produit.prix }} $</p>
+                    <button [routerLink]="['/product', 'produit', produit.id]" [state]="produit" class="details-button">
+                      Voir les détails
+                    </button>
+                  </div>
                 </div>
-                <!-- Produit 2 -->
-                <div class="product-item">
-                    <img src="produit2.jpg" alt="Produit 2">
-                    <h3>Produit 2</h3>
-                    <p>Description courte du produit 2.</p>
-                    <a href="#" class="btn">Découvrir</a>
-                </div>
-                <!-- Produit 3 -->
-                <div class="product-item">
-                    <img src="produit3.jpg" alt="Produit 3">
-                    <h3>Produit 3</h3>
-                    <p>Description courte du produit 3.</p>
-                    <a href="#" class="btn">Découvrir</a>
-                </div>
+                
+              </div>
+              
             </div>
         </div>
     </section>
@@ -91,11 +85,5 @@
         </div>
     </section>
 
-    <!-- Section À Propos de Nous -->
-    <section class="about-us">
-        <div class="container">
-            <h2>À Propos de Nous</h2>
-            <p>Depuis [année], [Nom de la Boutique] s'engage à fournir des produits de luxe exceptionnels à une clientèle exigeante. Notre passion pour l'excellence et notre dévouement à la satisfaction de nos clients sont au cœur de notre mission.</p>
-        </div>
-    </section>
+    
 </body>
