@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environnement';
 import { map, tap } from 'rxjs/operators';
+import { Profil } from '../models/Profil.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,11 @@ export class AuthService {
   isOnline$ = this.currentUser$.pipe(map((userName) => !!userName));
 
   constructor(private http: HttpClient) {}
-
+  getProfil(){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return  this.http.get<Profil>(`${this.apiUrl}/Auth/Get-Profile`, { headers })
+  }
   register(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/Auth/signup`, user);
   }

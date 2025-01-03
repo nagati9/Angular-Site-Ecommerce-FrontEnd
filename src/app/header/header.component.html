@@ -13,11 +13,14 @@
           <ul class="dropdown-menu">
             <li><a routerLink="/parfums" class="dropdown-item">Parfums</a></li>
             <li><a routerLink="/skincare" class="dropdown-item">Soins</a></li>
-            <li><a routerLink="/vetement" class="dropdown-item">Vêtements</a></li>
+            <li><a routerLink="/vetement" class="dropdown-item">Vêtements</a></li>        
           </ul>
         </li>
         <li class="menu-item">
           <a routerLink="/About" class="menu-link">À Propos</a>
+        </li>
+        <li class="menu-item" *ngIf="currentUser$">
+          <a routerLink="/Profile" class="menu-link">Mon Profil</a>
         </li>
       </ul>
     </nav>
@@ -38,6 +41,7 @@
           <span class="cart-badge">{{ cartItemCount }}</span>
         </a>
       </div>
+     
       <button *ngIf="userName" (click)="logout()" class="logout-button">Se déconnecter</button>
     </div>
   </div>

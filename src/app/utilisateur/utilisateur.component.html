@@ -1,1 +1,46 @@
-<p>utilisateur works!</p>
+<div class="page-container">
+    <div class="profil-container">
+      <h2>Mon Profil</h2>
+      <div class="profil-card">
+        <div class="profil-field">
+          <label>Nom :</label>
+          <span>{{ profil?.nom }}</span>
+        </div>
+        <div class="profil-field">
+          <label>Prénom :</label>
+          <span>{{ profil?.prenom }}</span>
+        </div>
+        <div class="profil-field">
+          <label>Date de Naissance :</label>
+          <span>{{ profil?.dateDeNaissance | date:'dd/MM/yyyy' }}</span>
+        </div>
+        <div class="profil-field">
+            <label>Genre :</label>
+            <span>{{ getGenreLabel(profil?.genreId) }}</span>
+          </div>
+        <div class="profil-field">
+          <label>Email :</label>
+          <span>{{ profil?.email }}</span>
+        </div>
+        <div class="profil-field">
+          <label>Téléphone :</label>
+          <span>{{ profil?.indicatifTelephone }} {{ profil?.telephone }}</span>
+        </div>
+        <div class="profil-field">
+          <label>Adresse :</label>
+          <span>{{ profil?.adresse }}, {{ profil?.ville }}, {{ profil?.codePostal }}</span>
+        </div>
+        <div class="profil-field">
+            <label>Code postal :</label>
+            <span>{{ profil?.codePostal }}</span>
+          </div>
+        <div class="profil-field">
+            <label>Pays :</label>
+            <span> {{ profil?.pays }}</span>
+          </div>
+       
+        
+      </div>
+    </div>
+  </div>
+  

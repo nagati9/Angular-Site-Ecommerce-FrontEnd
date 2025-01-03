@@ -2,45 +2,94 @@
   <h2>Créer un compte</h2>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div>
-      <label for="Nom">Nom</label>
-      <input
-        type="text"
-        id="Nom"
-        formControlName="Nom"
-        required
-        placeholder="Entrez votre nom"
-      />
-      <div *ngIf="registerForm.get('Nom')?.invalid && registerForm.get('Nom')?.touched">
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" formControlName="nom" placeholder="Entrez votre nom" />
+      <div *ngIf="registerForm.get('nom')?.invalid && registerForm.get('nom')?.touched">
         <small>Le nom est requis</small>
       </div>
     </div>
     <div>
+      <label for="prenom">Prénom</label>
+      <input type="text" id="prenom" formControlName="prenom" placeholder="Entrez votre prénom" />
+      <div *ngIf="registerForm.get('prenom')?.invalid && registerForm.get('prenom')?.touched">
+        <small>Le prénom est requis</small>
+      </div>
+    </div>
+    <div>
+      <label for="dateDeNaissance">Date de naissance</label>
+      <input type="date" id="dateDeNaissance" formControlName="dateDeNaissance" />
+      <div *ngIf="registerForm.get('dateDeNaissance')?.invalid && registerForm.get('dateDeNaissance')?.touched">
+        <small>La date de naissance est requise</small>
+      </div>
+    </div>
+    <div>
       <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        formControlName="email"
-        required
-        placeholder="Entrez votre email"
-      />
+      <input type="email" id="email" formControlName="email" placeholder="Entrez votre email" />
       <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
         <small>Email est requis et doit être valide</small>
       </div>
     </div>
     <div>
+      <label for="telephone">Téléphone</label>
+      <input type="text" id="telephone" formControlName="telephone" placeholder="Entrez votre téléphone" />
+      <div *ngIf="registerForm.get('telephone')?.invalid && registerForm.get('telephone')?.touched">
+        <small>Le téléphone est requis</small>
+      </div>
+    </div>
+    <div>
+      <label for="indicatifTelephone">Indicatif Téléphonique</label>
+      <input type="text" id="indicatifTelephone" formControlName="indicatifTelephone" placeholder="Ex: +33" />
+      <div *ngIf="registerForm.get('indicatifTelephone')?.invalid && registerForm.get('indicatifTelephone')?.touched">
+        <small>L'indicatif téléphonique est requis</small>
+      </div>
+    </div>
+    <div>
+      <label for="adresse">Adresse</label>
+      <input type="text" id="adresse" formControlName="adresse" placeholder="Entrez votre adresse" />
+      <div *ngIf="registerForm.get('adresse')?.invalid && registerForm.get('adresse')?.touched">
+        <small>L'adresse est requise</small>
+      </div>
+    </div>
+    <div>
+      <label for="ville">Ville</label>
+      <input type="text" id="ville" formControlName="ville" placeholder="Entrez votre ville" />
+      <div *ngIf="registerForm.get('ville')?.invalid && registerForm.get('ville')?.touched">
+        <small>La ville est requise</small>
+      </div>
+    </div>
+    <div>
+      <label for="codePostal">Code Postal</label>
+      <input type="text" id="codePostal" formControlName="codePostal" placeholder="Entrez votre code postal" />
+      <div *ngIf="registerForm.get('codePostal')?.invalid && registerForm.get('codePostal')?.touched">
+        <small>Le code postal est requis</small>
+      </div>
+    </div>
+    <div>
+      <label for="pays">Pays</label>
+      <input type="text" id="pays" formControlName="pays" placeholder="Entrez votre pays" />
+      <div *ngIf="registerForm.get('pays')?.invalid && registerForm.get('pays')?.touched">
+        <small>Le pays est requis</small>
+      </div>
+    </div>
+    <div>
       <label for="password">Mot de passe</label>
-      <input
-        type="password"
-        id="password"
-        formControlName="password"
-        required
-        placeholder="Entrez votre mot de passe"
-      />
+      <input type="password" id="password" formControlName="password" placeholder="Entrez votre mot de passe" />
       <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
         <small>Le mot de passe est requis</small>
       </div>
     </div>
-    <p> Already have an account ? <a href="/signin">Sign in</a></p>
+    <div>
+      <label for="genreId">Genre</label>
+      <select id="genreId" formControlName="genreId">
+        <option value="1">Féminin</option>
+        <option value="2">Masculin</option>
+        <option value="3">Autre</option>
+      </select>
+      <div *ngIf="registerForm.get('genreId')?.invalid && registerForm.get('genreId')?.touched">
+        <small>Le genre est requis</small>
+      </div>
+    </div>
+    <p>Already have an account? <a routerLink="/signin">Sign in</a></p>
     <button type="submit" [disabled]="registerForm.invalid">S'inscrire</button>
   </form>
 </div>

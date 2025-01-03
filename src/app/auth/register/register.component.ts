@@ -8,18 +8,25 @@ import { RouterLink } from '@angular/router';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule] ,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink] ,
 })
 export class RegisterComponent {
   registerForm: FormGroup;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.registerForm = this.fb.group({
-      Nom:['', [Validators.required]],
+      nom: ['', [Validators.required]],
+      prenom: ['', [Validators.required]],
+      dateDeNaissance: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-      
-      
+      telephone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      indicatifTelephone: ['', [Validators.required]],
+      adresse: ['', [Validators.required]],
+      ville: ['', [Validators.required]],
+      codePostal: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
+      pays: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      genreId: [null, [Validators.required]]
     });
   }
 
