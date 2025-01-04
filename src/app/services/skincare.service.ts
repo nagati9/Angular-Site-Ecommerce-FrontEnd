@@ -10,8 +10,11 @@ export class SkincareService {
     private apiUrl = `${environment.apiUrl}/Produit/GetProduitParType`;
 
     constructor(private http: HttpClient) {}
+  //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     getProduitsParType(type: number): Observable<Skincare[]> {
         return this.http.get<Skincare[]>(`${this.apiUrl}/${type}`);
     }
+  //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 }

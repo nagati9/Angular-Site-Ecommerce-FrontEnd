@@ -12,6 +12,7 @@ export class PanierService {
   private apiUrl = `${environment.apiUrl}`;
   private cartItemCountSubject = new BehaviorSubject<number>(0);
   constructor(private http: HttpClient) {}
+  //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   getPanier(): Observable<PanierProduit[]> {
     const token = localStorage.getItem('token'); // Récupérer le token du localStorage
@@ -27,11 +28,12 @@ export class PanierService {
 
     return this.http.get<PanierProduit[]>(`${this.apiUrl}/PanierProduit/GetProduitsPanier`, { headers });
   }
+  //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-  
   getCartItemCount(): Observable<number> {
     return this.cartItemCountSubject.asObservable();
   }
+  //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   // Mise à jour du nombre d'articles dans le panier
   updateCartItemCount(): void {
@@ -57,9 +59,7 @@ export class PanierService {
       console.log(`Total articles dans le panier : ${totalItemsCount}`);
     });
   }
-  
-  
-    
+ //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------    
   addToCart(produitId: number, quantite: number): Observable<any> {
     const token = localStorage.getItem('token'); // Récupérer le token JWT du stockage local
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -70,15 +70,20 @@ export class PanierService {
       { headers }
     );
   }
+ //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
   removeFromCart(id: number): Observable<any> {
     const token = localStorage.getItem('token'); // Ajouter le JWT
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
     return this.http.delete(`${this.apiUrl}/PanierProduit/DeleteFromPanier/${id}`, { headers });
   }
+ //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
   updateCartItem(produitId: number, quantite: number): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put(`${this.apiUrl}/PanierProduit/UpdateCartItem/${produitId}/${quantite}`, null, { headers });
   }
+ //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 }

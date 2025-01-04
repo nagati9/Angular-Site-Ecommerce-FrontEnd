@@ -12,10 +12,12 @@ export class ParfumService {
     private apiUrl = `${environment.apiUrl}/Produit/GetProduitParType`;
 
     constructor(private http: HttpClient) {}
+  //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     getProduitsParType(type: number): Observable<Parfum[]> {
         return this.http.get<Parfum[]>(`${this.apiUrl}/${type}`);
     }
+  //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     addToCart(produitId: number, quantite: number){
         

@@ -21,6 +21,7 @@ export class PanierComponent {
   nbProduits: number =0;
 
 constructor(private panierService: PanierService) {}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ngOnInit(): void {
   this.panierService.getPanier().subscribe(
     (data) => {
@@ -39,6 +40,7 @@ ngOnInit(): void {
     
   );
 }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 calcultotal(): void {
   if (Array.isArray(this.produitsPanier)) {
     this.total = this.produitsPanier.reduce((acc, produit) => {
@@ -51,7 +53,7 @@ calcultotal(): void {
     this.total = 0; // Ou une autre valeur par défaut appropriée
   }
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 retirerProduits(id: number): void {
   console.log("Produits dans le panier :", this.produitsPanier);
 
@@ -74,7 +76,7 @@ retirerProduits(id: number): void {
       }
     });
   }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
  modifierQuantite(produit: any, changement: number): void {
     const nouvelleQuantite = produit.quantite + changement;
     if (nouvelleQuantite > 0) {
@@ -96,5 +98,5 @@ console.log('nb=', this.produitsPanier.length)
 }
   
   }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }

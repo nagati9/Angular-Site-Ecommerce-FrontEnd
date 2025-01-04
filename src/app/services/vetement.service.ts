@@ -10,8 +10,11 @@ export class VetementService {
   private apiUrl = `${environment.apiUrl}/Produit/GetProduitParType`;
 
     constructor(private http: HttpClient) {}
+  //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     getProduitsParType(type: number): Observable<Vetement[]> {
         return this.http.get<Vetement[]>(`${this.apiUrl}/${type}`);
     }
+  //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 }

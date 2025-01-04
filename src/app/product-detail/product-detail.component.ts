@@ -17,7 +17,7 @@ export class ProductDetailComponent implements OnInit {
   isOnline$!: Observable<boolean>;
   // Injecter PanierService dans le constructeur
   constructor(private route: ActivatedRoute, private panierService: PanierService, private authService: AuthService) {}
-  
+ //----------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
   ngOnInit(): void {
     // Récupérer les données de l'état de navigation
     this.product = history.state;
@@ -27,7 +27,7 @@ export class ProductDetailComponent implements OnInit {
       this.product = { nom: 'Produit introuvable', marque: { nom: 'N/A' } };
     }
   }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
   public addToCart(id: any,quantite: any): void {
     this.panierService.addToCart(id, quantite).subscribe(
       (response) => {

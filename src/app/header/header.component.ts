@@ -15,14 +15,14 @@ export class HeaderComponent implements OnInit {
   userName: string | null = null;
   cartItemCount: number = 0;
   currentUser$:Observable<boolean> | undefined;
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
   constructor(
     private authService: AuthService,
     private panierService: PanierService,
     private router: Router
     
   ) {}
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
   ngOnInit(): void {
     // Récupérer l'utilisateur actuel
     this.authService.getCurrentUser().subscribe(
@@ -42,9 +42,7 @@ export class HeaderComponent implements OnInit {
        // Initialiser le compteur d'articles
     this.panierService.updateCartItemCount();
   }
-
- 
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
   logout(): void {
     this.authService.logout();
     this.userName = null;
@@ -58,4 +56,5 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------  
 }

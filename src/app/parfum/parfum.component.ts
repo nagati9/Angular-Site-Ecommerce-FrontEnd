@@ -19,14 +19,14 @@ export class ParfumComponent implements OnInit {
     parfums: Parfum[] = [];
     isOnline$!: Observable<boolean>;
    
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
     constructor(
         private parfumService: ParfumService, // Pour gérer les parfums
         private panierService: PanierService , 
         private authService: AuthService// Pour gérer le panier
       ) {}
     
-    
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------    
 
     ngOnInit(): void {
         this.parfumService.getProduitsParType(1).subscribe(data => {
@@ -34,6 +34,7 @@ export class ParfumComponent implements OnInit {
             this.parfums = data;
         });
     }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------    
     public   shortenName(nom : string){
         if (nom.length>25){
             return nom.substring(0,25)+"...";
@@ -42,12 +43,11 @@ export class ParfumComponent implements OnInit {
         return nom;
        }
     }
-   
-       
-      
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------       
       public addToCart(id: any,quantite: any): void {
         this.panierService.addToCart(id,1).subscribe(() => {
           this.panierService.updateCartItemCount(); // Met à jour le compteur
         });
     }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------    
 }

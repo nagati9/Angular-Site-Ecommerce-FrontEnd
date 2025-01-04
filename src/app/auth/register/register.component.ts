@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.registerForm = this.fb.group({
       nom: ['', [Validators.required]],
@@ -29,7 +29,7 @@ export class RegisterComponent {
       genreId: [null, [Validators.required]]
     });
   }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
   onSubmit(): void {
     if (this.registerForm.valid) {
       const formData = this.registerForm.value;
@@ -48,6 +48,6 @@ export class RegisterComponent {
       });
     }
   }
-  
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------  
   
 }

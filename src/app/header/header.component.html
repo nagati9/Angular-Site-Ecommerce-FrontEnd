@@ -4,7 +4,6 @@
     <div>
       <img routerLink="/Accueil" id="logo" src="logo.png" alt="">
     </div>
-
     <!-- Navigation Menu -->
     <nav class="nav-menu">
       <ul class="menu-list">
@@ -24,24 +23,20 @@
         </li>
       </ul>
     </nav>
-
     <!-- Icons Section -->
     <div class="icons">
-      <span *ngIf="userName; else guestTemplate" class="user-name">
+      <span *ngIf="userName; else guestTemplate" class="user-name" routerLink="/Profile">
         <i class="fas fa-user"></i> {{ userName }}
       </span>
-
       <ng-template #guestTemplate>
         <a routerLink="/register" class="icon-link"><i class="fas fa-user"></i></a>
       </ng-template>
-
       <div *ngIf="currentUser$" class="cart-icon-container">
         <a routerLink="/panier" class="icon-link">
           <i class="fas fa-shopping-cart"></i>
           <span class="cart-badge">{{ cartItemCount }}</span>
         </a>
-      </div>
-     
+      </div>    
       <button *ngIf="userName" (click)="logout()" class="logout-button">Se déconnecter</button>
     </div>
   </div>

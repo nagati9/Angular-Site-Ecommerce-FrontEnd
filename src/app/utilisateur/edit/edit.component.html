@@ -1,0 +1,24 @@
+<div class="change-password-container">
+    <h2>Changer de mot de passe</h2>
+    <form [formGroup]="changePasswordForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label>Ancien mot de passe:</label>
+        <input type="password" formControlName="oldPassword" required>
+      </div>
+      <div>
+        <label>Nouveau mot de passe:</label>
+        <input type="password" formControlName="newPassword" required>
+      </div>
+      <div>
+        <label>Confirmer le nouveau mot de passe:</label>
+        <input type="password" formControlName="confirmPassword" required>
+      </div>
+      <div *ngIf="changePasswordForm.errors?.['mismatch']">
+        Les mots de passe ne correspondent pas.
+      </div>        
+      <button type="submit" [disabled]="!changePasswordForm.valid || changePasswordForm.errors?.['mismatch']">
+        Changer le mot de passe
+      </button>
+    </form>
+  </div>
+  

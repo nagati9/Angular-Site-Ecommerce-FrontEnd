@@ -1,46 +1,117 @@
 <div class="page-container">
-    <div class="profil-container">
-      <h2>Mon Profil</h2>
-      <div class="profil-card">
-        <div class="profil-field">
-          <label>Nom :</label>
-          <span>{{ profil?.nom }}</span>
+  <div class="profil-container">
+    <h2>Mon Profil</h2>
+    <div class="profil-card">
+      <!-- Nom -->
+      <div class="profil-field">
+        <label>Nom :</label>
+        <div class="field-content">
+          <span *ngIf="!isEditing['nom']">{{ profil?.nom }}</span>
+          <input *ngIf="isEditing['nom']" type="text" [(ngModel)]="profil.nom" (ngModelChange)="onFieldChange('nom')">
+          <i class="fas fa-pencil-alt" (click)="toggleEdit('nom')" title="Modifier"></i>
         </div>
-        <div class="profil-field">
-          <label>Prénom :</label>
-          <span>{{ profil?.prenom }}</span>
+        <button *ngIf="isEditing['nom'] && isModified['nom']" (click)="saveField('nom')" class="save-button">Enregistrer</button>
+      </div>
+
+      <!-- Prénom -->
+      <div class="profil-field">
+        <label>Prénom :</label>
+        <div class="field-content">
+          <span *ngIf="!isEditing['prenom']">{{ profil?.prenom }}</span>
+          <input *ngIf="isEditing['prenom']" type="text" [(ngModel)]="profil.prenom" (ngModelChange)="onFieldChange('prenom')">
+          <i class="fas fa-pencil-alt" (click)="toggleEdit('prenom')" title="Modifier"></i>
         </div>
-        <div class="profil-field">
-          <label>Date de Naissance :</label>
-          <span>{{ profil?.dateDeNaissance | date:'dd/MM/yyyy' }}</span>
+        <button *ngIf="isEditing['prenom'] && isModified['prenom']" (click)="saveField('prenom')" class="save-button">Enregistrer</button>
+      </div>
+
+      <!-- Date de Naissance -->
+      <div class="profil-field">
+        <label>Date de Naissance :</label>
+        <div class="field-content">
+          <span *ngIf="!isEditing['dateDeNaissance']">{{ profil?.dateDeNaissance }}</span>
+          <input *ngIf="isEditing['dateDeNaissance']" type="date" [(ngModel)]="profil.dateDeNaissance" (ngModelChange)="onFieldChange('dateDeNaissance')">
+          <i class="fas fa-pencil-alt" (click)="toggleEdit('dateDeNaissance')" title="Modifier"></i>
         </div>
-        <div class="profil-field">
-            <label>Genre :</label>
-            <span>{{ getGenreLabel(profil?.genreId) }}</span>
-          </div>
-        <div class="profil-field">
-          <label>Email :</label>
-          <span>{{ profil?.email }}</span>
+        <button *ngIf="isEditing['dateDeNaissance'] && isModified['dateDeNaissance']" (click)="saveField('dateDeNaissance')" class="save-button">Enregistrer</button>
+      </div>
+
+      <!-- Email -->
+      <div class="profil-field">
+        <label>Email :</label>
+        <div class="field-content">
+          <span *ngIf="!isEditing['email']">{{ profil?.email }}</span>
+          <input *ngIf="isEditing['email']" type="email" [(ngModel)]="profil.email" (ngModelChange)="onFieldChange('email')">
+          <i class="fas fa-pencil-alt" (click)="toggleEdit('email')" title="Modifier"></i>
         </div>
-        <div class="profil-field">
-          <label>Téléphone :</label>
-          <span>{{ profil?.indicatifTelephone }} {{ profil?.telephone }}</span>
+        <button *ngIf="isEditing['email'] && isModified['email']" (click)="saveField('email')" class="save-button">Enregistrer</button>
+      </div>
+
+      <!-- Téléphone -->
+      <div class="profil-field">
+        <label>Téléphone :</label>
+        <div class="field-content">
+          <span *ngIf="!isEditing['telephone']">{{ profil?.telephone }}</span>
+          <input *ngIf="isEditing['telephone']" type="text" [(ngModel)]="profil.telephone" (ngModelChange)="onFieldChange('telephone')">
+          <i class="fas fa-pencil-alt" (click)="toggleEdit('telephone')" title="Modifier"></i>
         </div>
-        <div class="profil-field">
-          <label>Adresse :</label>
-          <span>{{ profil?.adresse }}, {{ profil?.ville }}, {{ profil?.codePostal }}</span>
+        <button *ngIf="isEditing['telephone'] && isModified['telephone']" (click)="saveField('telephone')" class="save-button">Enregistrer</button>
+      </div>
+
+      <!-- Indicatif Téléphone -->
+      <div class="profil-field">
+        <label>Indicatif Téléphone :</label>
+        <div class="field-content">
+          <span *ngIf="!isEditing['indicatifTelephone']">{{ profil?.indicatifTelephone }}</span>
+          <input *ngIf="isEditing['indicatifTelephone']" type="text" [(ngModel)]="profil.indicatifTelephone" (ngModelChange)="onFieldChange('indicatifTelephone')">
+          <i class="fas fa-pencil-alt" (click)="toggleEdit('indicatifTelephone')" title="Modifier"></i>
         </div>
-        <div class="profil-field">
-            <label>Code postal :</label>
-            <span>{{ profil?.codePostal }}</span>
-          </div>
-        <div class="profil-field">
-            <label>Pays :</label>
-            <span> {{ profil?.pays }}</span>
-          </div>
-       
-        
+        <button *ngIf="isEditing['indicatifTelephone'] && isModified['indicatifTelephone']" (click)="saveField('indicatifTelephone')" class="save-button">Enregistrer</button>
+      </div>
+
+      <!-- Adresse -->
+      <div class="profil-field">
+        <label>Adresse :</label>
+        <div class="field-content">
+          <span *ngIf="!isEditing['adresse']">{{ profil?.adresse }}</span>
+          <input *ngIf="isEditing['adresse']" type="text" [(ngModel)]="profil.adresse" (ngModelChange)="onFieldChange('adresse')">
+          <i class="fas fa-pencil-alt" (click)="toggleEdit('adresse')" title="Modifier"></i>
+        </div>
+        <button *ngIf="isEditing['adresse'] && isModified['adresse']" (click)="saveField('adresse')" class="save-button">Enregistrer</button>
+      </div>
+
+      <!-- Ville -->
+      <div class="profil-field">
+        <label>Ville :</label>
+        <div class="field-content">
+          <span *ngIf="!isEditing['ville']">{{ profil?.ville }}</span>
+          <input *ngIf="isEditing['ville']" type="text" [(ngModel)]="profil.ville" (ngModelChange)="onFieldChange('ville')">
+          <i class="fas fa-pencil-alt" (click)="toggleEdit('ville')" title="Modifier"></i>
+        </div>
+        <button *ngIf="isEditing['ville'] && isModified['ville']" (click)="saveField('ville')" class="save-button">Enregistrer</button>
+      </div>
+
+      <!-- Code Postal -->
+      <div class="profil-field">
+        <label>Code Postal :</label>
+        <div class="field-content">
+          <span *ngIf="!isEditing['codePostal']">{{ profil?.codePostal }}</span>
+          <input *ngIf="isEditing['codePostal']" type="text" [(ngModel)]="profil.codePostal" (ngModelChange)="onFieldChange('codePostal')">
+          <i class="fas fa-pencil-alt" (click)="toggleEdit('codePostal')" title="Modifier"></i>
+        </div>
+        <button *ngIf="isEditing['codePostal'] and isModified['codePostal']" (click)="saveField('codePostal')" class="save-button">Enregistrer</button>
+      </div>
+
+      <!-- Pays -->
+      <div class="profil-field">
+        <label>Pays :</label>
+        <div class="field-content">
+          <span *ngIf="!isEditing['pays']">{{ profil?.pays }}</span>
+          <input *ngIf="isEditing['pays']" type="text" [(ngModel)]="profil.pays" (ngModelChange)="onFieldChange('pays')">
+          <i class="fas fa-pencil-alt" (click)="toggleEdit('pays')" title="Modifier"></i>
+        </div>
+        <button *ngIf="isEditing['pays'] and isModified['pays']" (click)="saveField('pays')" class="save-button">Enregistrer</button>
       </div>
     </div>
+    <button class="change-password-button" routerLink="/edit">Changer le mot de passe</button>
   </div>
-  
+</div>
