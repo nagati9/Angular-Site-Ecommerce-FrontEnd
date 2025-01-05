@@ -6,7 +6,7 @@
       <div class="profil-field">
         <label>Nom :</label>
         <div class="field-content">
-          <span *ngIf="!isEditing['nom']">{{ profil?.nom }}</span>
+          <span *ngIf="!isEditing['nom']">{{ profil.nom }}</span>
           <input *ngIf="isEditing['nom']" type="text" [(ngModel)]="profil.nom" (ngModelChange)="onFieldChange('nom')">
           <i class="fas fa-pencil-alt" (click)="toggleEdit('nom')" title="Modifier"></i>
         </div>
@@ -17,7 +17,7 @@
       <div class="profil-field">
         <label>Prénom :</label>
         <div class="field-content">
-          <span *ngIf="!isEditing['prenom']">{{ profil?.prenom }}</span>
+          <span *ngIf="!isEditing['prenom']">{{ profil.prenom }}</span>
           <input *ngIf="isEditing['prenom']" type="text" [(ngModel)]="profil.prenom" (ngModelChange)="onFieldChange('prenom')">
           <i class="fas fa-pencil-alt" (click)="toggleEdit('prenom')" title="Modifier"></i>
         </div>
@@ -28,7 +28,7 @@
       <div class="profil-field">
         <label>Date de Naissance :</label>
         <div class="field-content">
-          <span *ngIf="!isEditing['dateDeNaissance']">{{ profil?.dateDeNaissance }}</span>
+          <span *ngIf="!isEditing['dateDeNaissance']">{{ profil.dateDeNaissance }}</span>
           <input *ngIf="isEditing['dateDeNaissance']" type="date" [(ngModel)]="profil.dateDeNaissance" (ngModelChange)="onFieldChange('dateDeNaissance')">
           <i class="fas fa-pencil-alt" (click)="toggleEdit('dateDeNaissance')" title="Modifier"></i>
         </div>
@@ -39,7 +39,7 @@
       <div class="profil-field">
         <label>Email :</label>
         <div class="field-content">
-          <span *ngIf="!isEditing['email']">{{ profil?.email }}</span>
+          <span *ngIf="!isEditing['email']">{{ profil.email }}</span>
           <input *ngIf="isEditing['email']" type="email" [(ngModel)]="profil.email" (ngModelChange)="onFieldChange('email')">
           <i class="fas fa-pencil-alt" (click)="toggleEdit('email')" title="Modifier"></i>
         </div>
@@ -50,7 +50,7 @@
       <div class="profil-field">
         <label>Téléphone :</label>
         <div class="field-content">
-          <span *ngIf="!isEditing['telephone']">{{ profil?.telephone }}</span>
+          <span *ngIf="!isEditing['telephone']">{{ profil.telephone }}</span>
           <input *ngIf="isEditing['telephone']" type="text" [(ngModel)]="profil.telephone" (ngModelChange)="onFieldChange('telephone')">
           <i class="fas fa-pencil-alt" (click)="toggleEdit('telephone')" title="Modifier"></i>
         </div>
@@ -61,7 +61,7 @@
       <div class="profil-field">
         <label>Indicatif Téléphone :</label>
         <div class="field-content">
-          <span *ngIf="!isEditing['indicatifTelephone']">{{ profil?.indicatifTelephone }}</span>
+          <span *ngIf="!isEditing['indicatifTelephone']">{{ profil.indicatifTelephone }}</span>
           <input *ngIf="isEditing['indicatifTelephone']" type="text" [(ngModel)]="profil.indicatifTelephone" (ngModelChange)="onFieldChange('indicatifTelephone')">
           <i class="fas fa-pencil-alt" (click)="toggleEdit('indicatifTelephone')" title="Modifier"></i>
         </div>
@@ -72,7 +72,7 @@
       <div class="profil-field">
         <label>Adresse :</label>
         <div class="field-content">
-          <span *ngIf="!isEditing['adresse']">{{ profil?.adresse }}</span>
+          <span *ngIf="!isEditing['adresse']">{{ profil.adresse }}</span>
           <input *ngIf="isEditing['adresse']" type="text" [(ngModel)]="profil.adresse" (ngModelChange)="onFieldChange('adresse')">
           <i class="fas fa-pencil-alt" (click)="toggleEdit('adresse')" title="Modifier"></i>
         </div>
@@ -83,7 +83,7 @@
       <div class="profil-field">
         <label>Ville :</label>
         <div class="field-content">
-          <span *ngIf="!isEditing['ville']">{{ profil?.ville }}</span>
+          <span *ngIf="!isEditing['ville']">{{ profil.ville }}</span>
           <input *ngIf="isEditing['ville']" type="text" [(ngModel)]="profil.ville" (ngModelChange)="onFieldChange('ville')">
           <i class="fas fa-pencil-alt" (click)="toggleEdit('ville')" title="Modifier"></i>
         </div>
@@ -94,7 +94,7 @@
       <div class="profil-field">
         <label>Code Postal :</label>
         <div class="field-content">
-          <span *ngIf="!isEditing['codePostal']">{{ profil?.codePostal }}</span>
+          <span *ngIf="!isEditing['codePostal']">{{ profil.codePostal }}</span>
           <input *ngIf="isEditing['codePostal']" type="text" [(ngModel)]="profil.codePostal" (ngModelChange)="onFieldChange('codePostal')">
           <i class="fas fa-pencil-alt" (click)="toggleEdit('codePostal')" title="Modifier"></i>
         </div>
@@ -105,7 +105,7 @@
       <div class="profil-field">
         <label>Pays :</label>
         <div class="field-content">
-          <span *ngIf="!isEditing['pays']">{{ profil?.pays }}</span>
+          <span *ngIf="!isEditing['pays']">{{ profil.pays }}</span>
           <input *ngIf="isEditing['pays']" type="text" [(ngModel)]="profil.pays" (ngModelChange)="onFieldChange('pays')">
           <i class="fas fa-pencil-alt" (click)="toggleEdit('pays')" title="Modifier"></i>
         </div>

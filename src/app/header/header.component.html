@@ -18,11 +18,15 @@
         <li class="menu-item">
           <a routerLink="/About" class="menu-link">À Propos</a>
         </li>
-        <li class="menu-item" *ngIf="currentUser$">
-          <a routerLink="/Profile" class="menu-link">Mon Profil</a>
-        </li>
       </ul>
     </nav>
+    <div *ngIf="userName">
+      <span>{{ userName }}</span>
+      <img [src]="flagUrl" alt="Country Flag">
+      <span>{{ currency }}</span>
+      <span>{{ countryCode }}</span>
+      <span>Cart Items: {{ cartItemCount }}</span>
+    </div>
     <!-- Icons Section -->
     <div class="icons">
       <span *ngIf="userName; else guestTemplate" class="user-name" routerLink="/Profile">

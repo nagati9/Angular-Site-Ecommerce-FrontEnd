@@ -4,6 +4,8 @@ import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { PanierService } from '../services/panier.service';
 import { Observable } from 'rxjs';
+import { Profil } from '../models/Profil.model';
+import { LocationService } from '../services/location.service';
 
 @Component({
   selector: 'app-header',
@@ -15,33 +17,35 @@ export class HeaderComponent implements OnInit {
   userName: string | null = null;
   cartItemCount: number = 0;
   currentUser$:Observable<boolean> | undefined;
+  profil!: Profil;
+  countryCode: string = '';
+  currency: string = '';
+  flagUrl: string = '';
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
   constructor(
     private authService: AuthService,
     private panierService: PanierService,
+    private locationService:LocationService,
     private router: Router
     
   ) {}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  ngOnInit(): void {
-    // Récupérer l'utilisateur actuel
-    this.authService.getCurrentUser().subscribe(
-      (response) => {
-        this.userName = response.userName; // Stocke le nom de l'utilisateur
-        this.currentUser$=this.authService.isOnline$;
-      },
-      (error) => {
-        console.log('Aucun utilisateur connecté.', error);
-      }
-    );
+ngOnInit(): void {
+  this.authService.getProfil().subscribe(data => {
+    this.profil = data;
+    this.userName = `${data.nom} ${data.prenom}`;
+  });
 
-      // Écouter les modifications du panier
-      this.panierService.getCartItemCount().subscribe((count) => {
-        this.cartItemCount = count;
-      });
-       // Initialiser le compteur d'articles
-    this.panierService.updateCartItemCount();
-  }
+  this.panierService.getCartItemCount().subscribe(count => {
+    this.cartItemCount = count;
+  });
+
+  this.locationService.getCountryData().subscribe(data => {
+    this.flagUrl = `https://ipapi.co/${data.country_code.toLowerCase()}/flag.png`;
+    this.currency = data.currencies[Object.keys(data.currencies)[0]].name;
+    this.countryCode = data.name;
+  });
+}
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
   logout(): void {
     this.authService.logout();
@@ -56,5 +60,6 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
+  
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------  
 }

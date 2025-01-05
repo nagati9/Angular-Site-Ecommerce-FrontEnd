@@ -53,6 +53,10 @@
   color:black;
   font-size: 14px;
 }
+.dropdown-item:hover{
+  background-color: #050a30;
+  color: white;
+}
 .icons {
   display: flex;
   align-items: center;
@@ -73,7 +77,18 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  cursor: pointer;
+  text-decoration: none; /* Ensures no underline by default */
 }
+
+.user-name:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.user-name:active {
+  color: #c0a383; /* Color change on click */
+}
+
 
 .logout-button {
   background: none;

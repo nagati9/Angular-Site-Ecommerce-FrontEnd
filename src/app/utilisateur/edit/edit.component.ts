@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErr
 
 @Component({
   selector: 'app-edit',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule,RouterLink ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule ],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css'
 })
@@ -39,7 +39,6 @@ onSubmit() {
     this.authService.changePassword(oldPassword,newPassword).subscribe({
       next: (response: any) => {
         console.log('Password changed successfully', response);
-        // Gérer la réussite, par exemple rediriger l'utilisateur ou afficher un message
       },
       error: (error: any) => {
         console.error('Error changing password:', error);
